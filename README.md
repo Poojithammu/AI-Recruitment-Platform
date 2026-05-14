@@ -16,6 +16,7 @@ A high-performance, enterprise-grade AI-powered recruitment ecosystem. This plat
 - 📺 **Demo Video**: [View Walkthrough](./demo_video/)
 - 📸 **Screenshots**: [View UI/UX Gallery](./screenshots/)
 - 📄 **Technical Docs**: [View Documentation](./documentation/)
+ - 🌐 **Live Demo**: https://hire-sense.netlify.app/
 
 ---
 
