@@ -6,25 +6,38 @@ const cheerio = require('cheerio');
 class ScraperService {
   async scrapeJobs(source, url) {
     let browser;
+
     try {
-      browser = await chromium.launch({ headless: true });
+      browser = await chromium.launch({
+        headless: true,
+        args: [
+          '--no-sandbox',
+          '--disable-setuid-sandbox',
+          '--disable-dev-shm-usage',
+          '--disable-gpu'
+        ]
+      });
+
       const context = await browser.newContext();
       const page = await context.newPage();
-      
-      await page.goto(url, { waitUntil: 'networkidle' });
+
+      await page.goto(url, {
+        waitUntil: 'networkidle',
+        timeout: 60000
+      });
+
       const content = await page.content();
-      
       const $ = cheerio.load(content);
       const jobs = [];
 
-      // Add actual scraping logic here based on source (e.g., LinkedIn, Naukri)
-      // This is a placeholder for the parsed jobs
       console.log(`Scraping ${source} at ${url}`);
 
       return jobs;
+
     } catch (error) {
       console.error(`Error scraping ${source}:`, error);
       throw error;
+
     } finally {
       if (browser) {
         await browser.close();
@@ -32,5 +45,4 @@ class ScraperService {
     }
   }
 }
-
 module.exports = new ScraperService();

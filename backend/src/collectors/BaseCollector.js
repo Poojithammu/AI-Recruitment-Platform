@@ -18,10 +18,16 @@ class BaseCollector {
 
   async getBrowser() {
     return await playwright.chromium.launch({
-      headless: process.env.PLAYWRIGHT_HEADLESS !== 'false'
+      headless: process.env.PLAYWRIGHT_HEADLESS !== 'false',
+      args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--disable-dev-shm-usage',
+        '--disable-gpu'
+      ]
     });
   }
-  
+
   // To be implemented by subclasses
   async collect() {
     throw new Error('collect() must be implemented');
