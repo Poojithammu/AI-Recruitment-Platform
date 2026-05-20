@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = '/api/requirements';
+const API_URL = import.meta.env.VITE_API_URL;
 
 const extractRequirements = async (jobDescription, token, provider = 'gemini') => {
   const config = {

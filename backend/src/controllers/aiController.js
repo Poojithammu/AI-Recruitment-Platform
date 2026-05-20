@@ -14,7 +14,7 @@ const extractRequirements = async (req, res) => {
     }
 
     const extractedData = await aiExtractionService.extractRequirements(jobDescription);
-    
+
     res.json(extractedData);
   } catch (error) {
     res.status(500).json({ message: error.message });

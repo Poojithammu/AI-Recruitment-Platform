@@ -5,7 +5,7 @@ const Recruiter = require('../../models/Recruiter');
 const Trend = require('../../models/Trend');
 
 class LeadScoringService {
-  async calculateLeadScore(companyId) {
+  async  calculateLeadScore(companyId) {
     try {
       const company = await Company.findById(companyId);
       if (!company) throw new Error('Company not found');

@@ -22,7 +22,6 @@ class ResilienceService {
         if (error.response) {
           if (error.response.status === 403 || error.response.status === 429) {
             logger.error(`${source} blocked/limited. Status: ${error.response.status}`);
-            // Could implement proxy rotation here
           }
         }
 

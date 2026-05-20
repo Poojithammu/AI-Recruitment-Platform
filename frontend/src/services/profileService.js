@@ -1,6 +1,5 @@
 import axios from 'axios';
-
-const API_URL = '/api/profiles';
+const API_URL =  import.meta.env.VITE_API_URL;
 
 // Get current user profile
 const getProfile = async (token) => {
